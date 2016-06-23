@@ -1,0 +1,20 @@
+{
+  "name": "ac-util-stream",
+  "description": "A collection of utility functions for streams.",
+  "version": "0.0.0",
+  "author": "Oliver Leics <oliver.leics@gmail.com>",
+  "license": "MIT",
+  "repository": "oleics/node-ac-util-stream",
+  "keywords": [
+    "stream",
+    "streams",
+    "util",
+    "utilities",
+    "utility",
+    "common"
+  ],
+  "main": "./index.js",
+  "dependencies": {
+    "is-stream": "^1.1.0"
+  }
+}
