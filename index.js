@@ -2,11 +2,15 @@
 
 var util = require('util');
 var isStream = require('is-stream');
+var PassThrough = require('stream').PassThrough;
 
 module.exports = {
   JsonWriter: JsonWriter,
   TypedJsonWriter: TypedJsonWriter,
-  JsonLogger: JsonLogger
+  JsonLogger: JsonLogger,
+
+  dataToJsonStream: dataToJsonStream,
+  arrayToJsonStream: arrayToJsonStream
 };
 
 function derefValue(value) {
@@ -59,4 +63,19 @@ function JsonLogger(writeJson) {
       });
     };
   }
+}
+
+function dataToJsonStream(data) {
+  var stream = new PassThrough();
+  JsonWriter(stream)(data);
+  stream.end();
+  return stream;
+}
+
+function arrayToJsonStream(arr) {
+  var stream = new PassThrough();
+  var writeJson = JsonWriter(stream);
+  arr.forEach(writeJson);
+  stream.end();
+  return stream;
 }

@@ -14,7 +14,7 @@ npm install ac-util-stream --save
 Usage
 -----
 
-### utilStream.JsonWriter(writable)
+##### utilStream.JsonWriter(writable)
 
 ```js
 var utilStream = require('ac-util-stream');
@@ -22,7 +22,7 @@ var writeJson = utilStream.JsonWriter(process.stdout);
 writeJson({foo:'bar'}); // -> {"foo":"bar"}\n
 ```
 
-### utilStream.TypedJsonWriter(writable | utilStream.JsonWriter)
+##### utilStream.TypedJsonWriter(writable | utilStream.JsonWriter)
 
 ```js
 var utilStream = require('ac-util-stream');
@@ -33,7 +33,7 @@ writeFooType({type: 'foo', foo: 'bar'}); // -> {"type":"foo","foo":"bar"}\n
 writeFooType({type: 'baz', foo: 'bar'}); // -> throws
 ```
 
-### utilStream.JsonLogger(writable | utilStream.JsonWriter)
+##### utilStream.JsonLogger(writable | utilStream.JsonWriter)
 
 ```js
 var utilStream = require('ac-util-stream');
@@ -48,7 +48,28 @@ log.debug({ foo:'bar' }); // -> {"type":"log","level":"log","message":"{ foo: 'b
 
 Available log-levels translate directly to `console.*()`.
 
-#### Reuse `utilStream.JsonWriter`
+##### readable dataToJsonStream(data)
+
+Creates a readable stream from data.
+
+```js
+var dataToJsonStream = require('ac-util-stream').dataToJsonStream;
+dataToJsonStream('hello').pipe(process.stdout);
+  // -> "hello"
+```
+
+##### readable arrayToJsonStream(data)
+
+Creates a readable stream from an array of data.
+
+```js
+var dataToJsonStream = require('ac-util-stream').dataToJsonStream;
+dataToJsonStream(['hello','world']).pipe(process.stdout);
+  // -> "hello"
+  //    "world"
+```
+
+##### Reuse `utilStream.JsonWriter`
 
 ```js
 var utilStream = require('ac-util-stream');
