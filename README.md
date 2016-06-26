@@ -58,7 +58,7 @@ dataToJsonStream('hello').pipe(process.stdout);
   // -> "hello"
 ```
 
-##### readable arrayToJsonStream(data)
+##### readable arrayToJsonStream(arrayOfData)
 
 Creates a readable stream from an array of data.
 
